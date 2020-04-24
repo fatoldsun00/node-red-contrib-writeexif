@@ -1,39 +1,32 @@
 {
-  "name": "node-red-contrib-watchdirectory",
-  "version": "1.0.121",
+  "name": "node-red-contrib-writeexif",
+  "version": "0.0.1",
   "description": "",
-  "main": "node-red-watchdirectory.js",
+  "main": "node-red-writeexif.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "node-red": {
     "nodes": {
-      "node-red-watchdirectory.js": "node-red-watchdirectory.js"
+      "node-red-writeexif.js": "node-red-writeexif.js"
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fatoldsun00/node-red-contrib-watchdirectory.git"
+    "url": "git+https://github.com/fatoldsun00/node-red-contrib-writeexif.git"
   },
   "keywords": [
-    "nodered",
-    "node-red",
-    "node red",
-    "file watcher",
-    "file watch",
-    "folder watcher",
-    "watch folder",
-    "directory",
-    "watcher",
-    "watch"
+    "exif",
+    "insert exif",
+    "write exif"
   ],
   "author": "FatOldSun",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fatoldsun00/node-red-contrib-watchdirectory/issues"
+    "url": "https://github.com/fatoldsun00/node-red-contrib-writeexif/issues"
   },
-  "homepage": "https://github.com/fatoldsun00/node-red-contrib-watchdirectory#readme",
+  "homepage": "https://github.com/fatoldsun00/node-red-contrib-writeexif#readme",
   "dependencies": {
-    "chokidar": "^3.3.1"
+    "exiftool-vendored": "^11.1.0"
   }
 }
