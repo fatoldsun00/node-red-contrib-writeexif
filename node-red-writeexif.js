@@ -38,7 +38,6 @@ module.exports = function(RED) {
         });
         msg.payload = await exiftool.read(imageFilePath)
 
-        console.log("--------------------------",node.deleteOriginal,"--------------------");
         if (node.deleteOriginal) {
           node.status({
             fill: "grey",
