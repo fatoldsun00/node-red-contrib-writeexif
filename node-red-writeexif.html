@@ -1,0 +1,68 @@
+<script type="text/javascript">
+    RED.nodes.registerType('write-exif',{
+        category: 'image',
+        color: '#cc99ff',
+        defaults: {
+            image: {
+                value:"", 
+                required: true,
+            },
+            imageType: { value:"msg" },
+            exif: {
+                value:"payload", 
+                required: true,
+            },
+            exifType: { value:"msg" },
+            deleteOriginal: {value:false},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-address-card",
+        label: function() {
+            return this.name || "write-exif";
+        },
+        oneditprepare: function() {
+            $("#node-input-image").typedInput({
+                default: this.imageType  || 'msg', 
+                types:['msg','flow','global','str','jsonata'],
+                typeField: $("#node-input-imageType")
+            });
+            $("#node-input-exif").typedInput({
+                default: this.exifType  || 'msg', 
+                types:['msg','flow','global','jsonata','json'],
+                typeField: $("#node-input-exifType")
+            });
+            
+        },
+        oneditsave: function() { 
+            this.imageType = $("#node-input-imageType").val()
+            this.exifType = $("#node-input-exifType").val()
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="write-exif">
+    <div class="form-row">
+        <label for="node-input-image"><i class="fa fa-image"></i> Image</label>
+        <input type="text" id="node-input-image"  style="width: 70%;" placeholder="Path to image">
+        <input type="hidden" id="node-input-imageType">
+    </div>
+    <div class="form-row" >
+        <label for="node-input-exif"><i class="fa fa-info"></i> Exif object</label>
+        <input type="text" id="node-input-exif" style="width: 70%;" placeholder='{"XPComment":commentVar, "XPAuthor": "FatOldSun"}'>
+        <input type="hidden" id="node-input-exifType">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deleteOriginal">&nbsp;</label>            
+        <input type="checkbox" id="node-input-deleteOriginal" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-deleteOriginal" style="width: auto"><i class="fa fa-trash-o" style="transform: scaleX(-1);"></i> Delete original after writing exif (dangerous)</label>
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span>Name</span></label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="write-exif">
+    <p>A simple node that converts the message payloads into all write-exif characters</p>
+</script>
